@@ -1,3 +1,6 @@
+const api_key = '29225d019bba46d286e4bed94635339e';
+
+
 function Search() {
     async function newSearch(/*parámetro que pasa el usuario*/) {
         const url = "";
@@ -14,4 +17,4 @@ function Search() {
     }).catch(error => {
         console.log(error);
     })
-}
+}           
