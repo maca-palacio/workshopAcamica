@@ -1,4 +1,5 @@
 
+const api_key = '29225d019bba46d286e4bed94635339e';
 
 function Search() {
     async function newSearch(q) {
@@ -17,7 +18,10 @@ function Search() {
     }).catch(error => {
         console.log(error);
     })
-}
+
+}           
+
+
 
 // funcion que crea la noticia.ç
 // tendríamos que hacer un document.get del componente al que vamos a appendear la noticia
@@ -26,3 +30,4 @@ function createNews(x) {
         //generar noticia dinámicamente
     }
 }
+
