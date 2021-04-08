@@ -1,4 +1,5 @@
 
+const api_key = '29225d019bba46d286e4bed94635339e';
 
 function Search() {
     async function newSearch(q) {
@@ -19,7 +20,10 @@ function Search() {
     }).catch(error => {
         console.log(error);
     })
-}
+
+}           
+
+
 
 // funcion que crea la noticia.
 // document.get del componente al que vamos a appendear la noticia
@@ -41,3 +45,4 @@ function createNews(x) {
         }
     }
 }
+
