@@ -1,48 +1,44 @@
+let searchInput = document.getElementById('busc');
+let searchBtn = document.getElementById('boton');
+let imagen = document.getElementById("imagen-noticia");
+let titulo = document.getElementById("titulo");
+let textoNoticia = document.getElementById("texto-noticia");
+let fechaPublicaion = document.getElementById("fecha");
 
-const api_key = '29225d019bba46d286e4bed94635339e';
+const api_key = '44dede0c8fe4abaf99c1ae97ac41b9e7';
+const sortby = "publishedAt"; //Ordena noticias de mas a nuevas a mas viejas
+const lang = ['en','es']; // selecion del lenguage en el que se va a buscar 
 
-function Search() {
-    async function newSearch(q) {
-        const url = "https://newsapi.org/v2/everything?q="+q"&from=2021-03-08&sortBy=publishedAt&apiKey="+api_key;
-        const resp = await fetch(url);
-        const info = await resp.json();
-        return info;
-    }
+//funcion que se comunica con la API
+async function newSearch(q) {
+    let url = `https://gnews.io/api/v4/search?q=${q}&token=${api_key}&sortby=${sortby}&lang=${lang[1]}`
+    const resp = await fetch(url);
+    const data = await resp.json();
+    return data
+}
 
-    // fetch con promesa
-    let input_value = /*valor del input buscador*/
-    let info = newSearch(input_value);
-    info.then(response => {
-        //funcion que crea la noticia.
-        noticia = createNews();
-        // al final del proceso hace append al contenedor
-        news_ctn.appendChild(noticia);
-    }).catch(error => {
+//funcion que crea la noticia 
+function buscar(){
+    let info = newSearch(searchInput.value);
+    info.then(response =>{
+        imagen.setAttribute('src',response.articles[0].image) //imagen
+        titulo.textContent = response.articles[0].title; //titulo de la noticia 
+        textoNoticia.textContent = response.articles[0].content; // contenido de la notica 
+        fechaPublicaion.textContent = response.articles[0].publishedAt //fechas de la noticia 
+        
+    })
+    .catch(error => {
         console.log(error);
     })
-
-}           
-
-
-
-// funcion que crea la noticia.
-// document.get del componente al que vamos a appendear la noticia
-news_ctn = document.getElementById("contenedor-noticias");
-function createNews(x) {
-    if (/*total results === 0 */) {
-        console.error("no se encontraron noticias con esa palabra");
-    }
-    else {
-        for (let i=0;i<1;i++) {
-            //generar noticia dinámicamente
-            let title = document.getElementById("titulo");
-            title.innerHTML = /* posicion del JSON correspondiente*/
-            let photo = document.getElementById("imagen-noticia");
-            photo.className = /*clase estilo imagenes */
-            photo.setAttribute("src", /* posicion del JSON corresp*/)
-            let content = document.getElementById("texto-noticia");
-            content.innerHTML = /* posicion del JSON corresp */
-        }
-    }
 }
+
+//evento del click y presionar enter para buscar noticia
+searchBtn.addEventListener('click',buscar);
+searchInput.addEventListener('keyup', ()=> {
+    if (event.keyCode === 13) {
+        buscar();
+    }
+});
+
+
 

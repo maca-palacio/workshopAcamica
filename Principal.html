@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
     <link rel="stylesheet" href="Noticias.css">
     <title>Principal</title>
 </head>
@@ -11,8 +12,8 @@
     <nav name="menu">
         <div id="menu">
             <div id="barra">
-                    <img id="cronica" src="cronica.png">
-                    <h1>Crónica</h1>     
+                <img id="cronica" src="logo-white.svg">
+                <h1>Channel</h1>     
             </div>
         </div>
     </nav>
@@ -20,7 +21,6 @@
         <div id="titulo-buscador">
             <h2> Busca aquí las noticias de la semana.</h2>
         </div>
-        
         <div id="buscador">
             <div id="contenedor-busc">
         <input type="search" id="busc" placeholder="Busca tu noticia aquí">
@@ -29,9 +29,11 @@
     </div>
     <div id="contenedor-noticias">
         <h1 id="titulo"></h1>
-        <img src="" alt="" srcset="" id="imagen-noticia">
+        <p id="fecha"></p>
+        <img src="" alt="" id="imagen-noticia">
         <p id="texto-noticia"></p>
     </div>
     </main>
+    <script src="fetch.js"></script>
 </body>
 </html>
