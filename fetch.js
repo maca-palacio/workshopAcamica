@@ -41,4 +41,30 @@ searchInput.addEventListener('keyup', ()=> {
 });
 
 
+// Loadstart --> Al cargar la página dispara función que busca y trae la última noticia 
+addEventListener('loadstart', () => {
+    async function newSearch() {
+        //let url = `https://gnews.io/api/v4/search?q=${q}&token=${api_key}&sortby=${sortby}&lang=${lang[1]}`
+        let url = 'https://gnews.io/api/v4/top-headlines?token=44dede0c8fe4abaf99c1ae97ac41b9e7&lang=es'
+        const resp = await fetch(url);
+        const data = await resp.json();
+        return data
+    }
+    
+    //funcion que crea la noticia 
+    function buscarPrincipal(){
+        let info = newSearch();
+        info.then(response =>{
+            imagen.setAttribute('src',response.articles[0].image) //imagen
+            titulo.textContent = response.articles[0].title; //titulo de la noticia 
+            textoNoticia.textContent = response.articles[0].content; // contenido de la notica 
+            fechaPublicaion.textContent = response.articles[0].publishedAt //fechas de la noticia 
+            
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
 
+    buscarPrincipal();
+});
