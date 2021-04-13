@@ -42,7 +42,7 @@ searchInput.addEventListener('keyup', ()=> {
 
 
 // Loadstart --> Al cargar la página dispara función que busca y trae la última noticia 
-addEventListener('loadstart', () => {
+addEventListener('DOMContentLoaded', () => {
     async function newSearch() {
         //let url = `https://gnews.io/api/v4/search?q=${q}&token=${api_key}&sortby=${sortby}&lang=${lang[1]}`
         let url = 'https://gnews.io/api/v4/top-headlines?token=44dede0c8fe4abaf99c1ae97ac41b9e7&lang=es'
